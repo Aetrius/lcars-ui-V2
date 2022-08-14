@@ -5,6 +5,12 @@ import (
 	"net/http"
 )
 
+type Aether struct {
+	//exported field since it begins
+	//with a capital letter
+	CPU int
+}
+
 func main() {
 	fs := http.FileServer(http.Dir("views"))
 	http.Handle("/", fs)
@@ -12,4 +18,3 @@ func main() {
 	log.Println("Listening...")
 	http.ListenAndServe(":8080", nil)
 }
- 
