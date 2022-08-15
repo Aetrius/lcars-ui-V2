@@ -1,8 +1,8 @@
 version: "2.3"
 services:
-  lcars-backend:
+  lcars-frontend:
     build: .
     ports:
-      - "80:80"
+      - "8002:8002"
     environment:
       APP_HOME: /app

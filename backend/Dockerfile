@@ -20,15 +20,15 @@ RUN go get golang.org/x/net
 #RUN go get github.com/cosmtrek/air@latest
 
 COPY *.go ./
-COPY index.html ./
 COPY cmd/ cmd/
 COPY controllers/ controllers/
 COPY routes/ routes/
 COPY views/ views/
+COPY models/ models/
 COPY stream.go stream.go
 RUN go mod vendor
 
 RUN ls
 RUN go build -o /lcars
-EXPOSE 80
+EXPOSE 8002
 CMD ["/lcars"] --v
