@@ -1,0 +1,8 @@
+version: "2.3"
+services:
+  lcars-proxy:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      APP_HOME: /app
