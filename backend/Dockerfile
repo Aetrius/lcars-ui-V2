@@ -29,6 +29,6 @@ COPY stream.go stream.go
 RUN go mod vendor
 
 RUN ls
-RUN go build -o /lcars
+RUN go build -o /lcars/cmd/main.go
 EXPOSE 8002
 CMD ["/lcars"] --v
