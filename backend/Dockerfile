@@ -19,16 +19,18 @@ RUN go get github.com/labstack/echo/v4
 RUN go get golang.org/x/net
 #RUN go get github.com/cosmtrek/air@latest
 
-COPY *.go ./
-COPY cmd/ cmd/
+COPY cmd/main.go cmd/main.go
+#COPY cmd/ ./
 COPY controllers/ controllers/
-COPY routes/ routes/
-COPY views/ views/
+COPY routes/ ./
+COPY views/ ./
 COPY models/ models/
-COPY stream.go stream.go
+COPY models/models.go /models/models.go
+#COPY stream.go ./
 RUN go mod vendor
 
 RUN ls
-RUN go build -o /lcars/cmd/main.go
-EXPOSE 8002
-CMD ["/lcars"] --v
+RUN go build .
+RUN ls
+EXPOSE 8082
+CMD ["go", "run" "cmd/main.go"] --v

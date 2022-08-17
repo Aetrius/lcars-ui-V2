@@ -3,9 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"stream/models"
+
 	echo "github.com/labstack/echo/v4"
 	"golang.org/x/net/websocket"
-	"stream/models"
 )
 
 // Controller interface has two methods
@@ -27,11 +28,9 @@ func NewController() Controller {
 var model models.Model
 
 // Initializes the models
-func Init(){
+func Init() {
 	model = models.NewModel()
 }
-
-
 
 func (c *controller) HomeController(e echo.Context) error {
 	return e.File("views/index.html")
@@ -48,7 +47,7 @@ func (c *controller) StreamController(e echo.Context) error {
 		}
 		for {
 			// Write
-			newVal := <- status
+			newVal := <-status
 			jsonResponse, _ := json.Marshal(newVal)
 			err := websocket.Message.Send(ws, fmt.Sprintln(string(jsonResponse)))
 			if err != nil {

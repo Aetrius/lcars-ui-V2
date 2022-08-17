@@ -29,13 +29,11 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #3f3f3f;
 }
-
 @supports (scrollbar-color: #2d2d2d #121212) {
     * {
         scrollbar-color: #2d2d2d #121212;
     }
 }
-
 body {
     margin: 0;
     padding: 5px 0;
@@ -47,27 +45,6 @@ body {
 a {
     color: #c3f;
     text-decoration: underline;
-}
-meter::-webkit-meter-optimum-value {
-    -webkit-transition: width .5s;
-  }
-  
-meter::-webkit-meter-optimum-value:hover {
-/* Reset each sub-category to 20% */
-background-image: linear-gradient(
-    90deg, 
-    #8bcf69 20%, 
-    #e6d450 20%,
-    #e6d450 40%,
-    #f28f68 40%,
-    #f28f68 60%,
-    #cf82bf 60%,
-    #cf82bf 80%,
-    #719fd1 80%,
-    #719fd1 100%
-);
-transition: width .5s;
-width: 100% !important; /* !important required. to override the inline styles in WebKit. */
 }
 @keyframes blink {
     0% {

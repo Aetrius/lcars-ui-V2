@@ -4,7 +4,7 @@ import (
 	"stream"
 )
 
-func main(){
+func main() {
 	// Initiates the app and starts long running server
 	stream.Init()
 }

@@ -8,7 +8,7 @@ RUN mkdir -p "$APP_HOME"
 WORKDIR "$APP_HOME"
 
 COPY go.mod ./
-COPY go.sum ./
+#COPY go.sum ./
 RUN go mod download
 RUN go mod tidy
 RUN go mod vendor
@@ -17,18 +17,21 @@ RUN go get github.com/joho/godotenv
 RUN go get github.com/mackerelio/go-osstat/cpu
 RUN go get github.com/labstack/echo/v4
 RUN go get golang.org/x/net
+RUN go get github.com/kataras/iris
+RUN go mod download golang.org/x/sys
+
 #RUN go get github.com/cosmtrek/air@latest
 
-COPY *.go ./
-COPY index.html ./
-COPY cmd/ cmd/
-COPY controllers/ controllers/
-COPY routes/ routes/
-COPY views/ views/
-COPY stream.go stream.go
+COPY main.go .
+COPY views/index.html views/index.html
+COPY views/assets/ .
+COPY views/assets/lcars-classic.min.css views/assets/lcars-classic.min.css
+COPY views/assets/lcars.js views/assets/lcars.js
+#COPY stream.go ./
 RUN go mod vendor
 
 RUN ls
 RUN go build -o /lcars
-EXPOSE 80
+RUN ls
+EXPOSE 8000
 CMD ["/lcars"] --v
